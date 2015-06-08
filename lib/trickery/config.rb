@@ -1,9 +1,11 @@
+require 'trickery/deep_ostruct'
+
 require 'yaml'
 
 module Trickery
   module Config
 
-    include DeepOstruct
+    include Trickery::DeepOstruct
 
     def read_config(file)
       deep_ostruct(YAML.load(File.read(file)))

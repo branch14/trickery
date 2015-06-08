@@ -1,6 +1,13 @@
-# Trickery
+     _____     _      _
+    |_   _| __(_) ___| | _____ _ __ _   _
+      | || '__| |/ __| |/ / _ \ '__| | | |
+      | || |  | | (__|   <  __/ |  | |_| |
+      |_||_|  |_|\___|_|\_\___|_|   \__, |
+                                    |___/
 
-Collected ruby tricks in a reusable fashion.
+# Welcome to Trickery
+
+Reusable ruby trickery.
 
 ## Installation
 

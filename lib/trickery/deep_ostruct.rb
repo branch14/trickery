@@ -6,7 +6,7 @@ module Trickery
     def deep_ostruct(opts)
       OpenStruct.new.tap do |o|
         opts.each do |key, value|
-          o.send key + '=',
+          o.send key.to_s + '=',
                  case value
                  when Hash
                    deep_ostruct(value)
