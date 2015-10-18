@@ -25,4 +25,10 @@ describe Hash do
     assert { { a: { b: 0 } } == a.deep_merge(b) }
   end
 
+  it 'ignores nil at level 0' do
+    a = { a: 42 }
+    b = { a: nil }
+    assert { { a: 42 } == a.deep_merge(b) }
+  end
+
 end

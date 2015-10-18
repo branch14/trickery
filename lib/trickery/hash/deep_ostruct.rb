@@ -2,19 +2,30 @@ require 'ostruct'
 
 class ::Hash
 
-  def deep_ostruct(values=nil)
-    values ||= self
-    case values
-    when Hash
-      OpenStruct.new.tap do |o|
-        values.each do |key, value|
-          o.send key.to_s + '=',
-                 deep_ostruct(value)
-        end
+  def deep_ostruct
+    OpenStruct.new.tap do |o|
+      each do |key, value|
+        o.send key.to_s + '=',
+               case value
+               when Hash, Array
+                 value.deep_ostruct
+               else value
+               end
       end
-    when Array
-      values.map { |v| deep_ostruct(v) }
-    else values
+    end
+  end
+
+end
+
+class ::Array
+
+  def deep_ostruct
+    map do |v|
+      case value
+      when Hash, Array
+        value.deep_ostruct
+      else value
+      end
     end
   end
 

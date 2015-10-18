@@ -1,3 +1,5 @@
+$:.unshift File.dirname(__FILE__)
+
 require "trickery/version"
 
 require 'trickery/cmd_runner'
