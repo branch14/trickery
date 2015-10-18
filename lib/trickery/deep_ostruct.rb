@@ -3,18 +3,18 @@ require 'ostruct'
 module Trickery
   module DeepOstruct
 
-    def deep_ostruct(opts)
-      OpenStruct.new.tap do |o|
-        opts.each do |key, value|
-          o.send key.to_s + '=',
-                 case value
-                 when Hash
+    def deep_ostruct(values)
+      case values
+      when Hash
+        OpenStruct.new.tap do |o|
+          values.each do |key, value|
+            o.send key.to_s + '=',
                    deep_ostruct(value)
-                 when Array
-                   value.map { |v| deep_ostruct(v) }
-                 else value
-                 end
+          end
         end
+      when Array
+        values.map { |v| deep_ostruct(v) }
+      else values
       end
     end
 
