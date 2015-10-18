@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-require File.expand_path(File.join(%w(.. .. .. lib trickery hash deep_merge)), __FILE__)
+require File.expand_path(File.join(%w(.. .. .. .. lib trickery hash deep_merge)), __FILE__)
 
 describe Hash do
 
