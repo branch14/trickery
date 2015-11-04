@@ -1,7 +1,7 @@
 class Hash
 
   class << self
-    def nested_hash
+    def new_nested
       Hash.new { |h,k| h[k] = Hash.new(&h.default_proc) }
     end
   end
