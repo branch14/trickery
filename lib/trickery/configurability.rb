@@ -8,7 +8,7 @@ module Trickery
   class Configurability < Struct.new(:prefix, :fields)
 
     def default_opts
-      @default_opts ||= nested_hash.tap do |opts|
+      @default_opts ||= Hash.new_nested.tap do |opts|
         fields.each do |field|
           names = field[2].split('.')
           value = opts
@@ -24,7 +24,7 @@ module Trickery
     end
 
     def cli_opts(args)
-      @cli_opts ||= nested_hash.tap do |opts|
+      @cli_opts ||= Hash.new_nested.tap do |opts|
         args.options do |o|
           fields.each do |field|
             o.on(field[0], field[1]+'=val', String) do |val|
@@ -45,7 +45,7 @@ module Trickery
     end
 
     def env_opts
-      @env_opts ||= nested_hash.tap do |opts|
+      @env_opts ||= Hash.new_nested.tap do |opts|
         fields.each do |field|
           env = (prefix+'.'+field[2]).upcase.tr('.', '_')
           if val = ENV[env]
