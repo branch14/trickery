@@ -20,7 +20,7 @@ end
 class ::Array
 
   def deep_ostruct
-    map do |v|
+    map do |value|
       case value
       when Hash, Array
         value.deep_ostruct
